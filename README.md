@@ -10,6 +10,13 @@ spectrum and a statistical analysis of the calibration.
 Instructions for using the Makefile to run the calibration script and
 compiling the LaTeX lab report are posted below:
 
+
+## Setting up the repo
+```
+git clone
+pip install requirements.txt
+```
+
 ## File instructions
 
 ### Step 1: Download the data

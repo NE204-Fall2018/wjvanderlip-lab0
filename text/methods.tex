@@ -1,1 +1,54 @@
-Experimental procedure / set up / methods go here.
+We will begin by outlining the objectives for our automation of the data analysis:
+
+\begin{enumerate}
+  \item All produceables are called via a {\tt Makefile}.
+  \item Data is imported from an online public storate site.
+  \item Energy calibration is completed on at least one isotope from the energy data.
+  \item The lab report is written in \LaTeX and complied via the make file into a .pdf document
+  \item All files are pushed to {\tt GitHub} for submission.
+\end{enumerate}
+
+Each of one these tasks will provide insight into data analysis, technical writing, and
+production of publishable documents.
+
+\subsection{Peak Fitting}
+
+As the importing of data is a routine exercise, we will start with the discussion of our analysis in Python.
+The first task is to read and unpack the data file and convert it to a {\tt numpy} array. From this array, we will parse the data and
+build sub arrays for each isotope. We then manually input the known gamma energy for each isotope. These known values are shown below, as well
+as a composite spectrum of all the sources.
+
+
+
+\begin{figure}
+  \includegraphics[width=0.6\textwidth]{am_cs_uncalibrated.png}
+  {
+  \caption{Plot of raw spectrum data for sources.}
+  }
+%%table data fro KJBilton
+  \begin{tabular}{l|r}
+    \textbf{Source} & \textbf{Energy (keV)}\\
+    \hline
+    $^{241}$Am    &  59.541    \\
+    $^{133}$Ba    &  80.997    \\
+                  &  356.017   \\
+    $^{60}$Co     &  1173.237  \\
+                  &  1332.501  \\
+    $^{137}$Cs    &  661.657   \\
+    $^{152}$Eu    &  121.781   \\
+                  &  1408.006  \\
+  \end{tabular}
+  \caption{Gamma-ray lines used in the calibration}
+  %\label{tab:src}
+\end{figure}
+
+Once the peak values are assigned, we then determined the indexing of this known value within the data for several peaks.
+Now knowing the difference between the binned energy and the published energy, you can calibrate the rest of the spectrum based
+on this difference.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{am_cs_calibrated.png}
+  \caption{Calibrated Energy for $^{241}$Am and $^{137}$Cs}
+%\label{fig:gaus_model}
+\end{figure}

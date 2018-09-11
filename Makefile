@@ -2,7 +2,7 @@ manuscript = report
 latexopt = -file-line-error -halt-on-error
 
 # Build the PDF of the lab report from the source files
-$(manuscript).pdf: $(manuscript).tex text/*.tex references.bib images/*.png
+$(manuscript).pdf: $(manuscript).tex text/*.tex references.bib images/*.png #images/*.csv
 	pdflatex $(latexopt) $(manuscript).tex
 	bibtex $(manuscript).aux
 	bibtex $(manuscript).aux
@@ -11,19 +11,23 @@ $(manuscript).pdf: $(manuscript).tex text/*.tex references.bib images/*.png
 
 # Get/download necessary data
 data :
-	echo "WARNING: make data has not yet been implemented."
+	curl -L -o lab0_spectral_data.txt https://www.dropbox.com/s/hutmwip3681xlup/lab0_spectral_data.txt?dl=0
 
 # Validate that downloaded data is not corrupted
 validate :
-	echo "WARNING: make validate has not yet been implemented."
+	curl -L -o md5.txt https://www.dropbox.com/s/amumdrm9zp1kn8d/lab0_spectral_data.md5?dl=0
+	md5sum lab0_spectral_data.txt
+	md5sum -c md5.txt
 
 # Run tests on analysis code
+#NOT ACTIVE
 test :
-	nosetests --no-byte-compile test/*
+	python test/new_test.py
+#nosetests --no-byte-compile test/*
 
 # Automate running the analysis code
 analysis :
-	cd code/ && python example.py
+	python code/data_analysis.py
 
 clean :
 	rm -f *.aux *.log *.bbl *.lof *.lot *.blg *.out *.toc *.run.xml *.bcf

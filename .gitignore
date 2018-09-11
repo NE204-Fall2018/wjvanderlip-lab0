@@ -1,0 +1,19 @@
+# Remove latex stuff
+
+*.bbl
+*.blg
+*.aux
+*.log
+*.lof
+*.lot
+*.out
+*.toc
+*.run.xml
+*.bcf
+
+*.txt
+
+# Remove notebooks
+*.ipynb
+
+__pycache__/

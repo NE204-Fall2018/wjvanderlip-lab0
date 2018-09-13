@@ -22,12 +22,12 @@ validate :
 # Run tests on analysis code
 #NOT ACTIVE
 test :
-	python test/lab0_test.py
+	cd test/ && python lab0_tests.py
 #nosetests --no-byte-compile test/*
 
 # Automate running the analysis code
 analysis :
-	python code/analysis.py
+	cd code/ && python analysis.py
 
 clean :
 	rm -f *.aux *.log *.bbl *.lof *.lot *.blg *.out *.toc *.run.xml *.bcf

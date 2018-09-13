@@ -35,7 +35,6 @@ pip install -r requirements.txt
 #### Step 1: Download the data
 ```
 make data
-
 ```
 This will download a text file of the from dropbox with all necessary data.
 
@@ -60,7 +59,7 @@ Runs the python script which conducts a linear energy calibration of the Cs and 
 this calibration with the accepted values of the Ba gamma energies. This call will output three figures into the images
 folder as well as update two LaTeX tables for the report.
 
-### Step 5: Compile the lab report using outputs from the calibration script
+#### Step 5: Compile the lab report using outputs from the calibration script
 ```
 make
 ```

@@ -43,6 +43,7 @@ def do_work():
     plt.ylabel("Counts")
     plt.legend()
     plt.savefig('../images/am_cs_uncalibrated.png')
+    plt.clf()
     #plt.show()
 
     csE, csDF = gammaEnergy("Cs-137")
@@ -61,6 +62,7 @@ def do_work():
     plt.legend(loc=1)
     plt.xlim(0, 1200)
     plt.savefig('../images/am_cs_calibrated.png')
+    plt.clf()
     #plt.show()
 
     ## finds points for error plotting, error is so small it does not render on linear calib plot
@@ -80,6 +82,7 @@ def do_work():
     plt.legend(loc=0)
     #plt.xlim(0, 1500)
     plt.savefig('../images/linear_fit.png')
+    plt.clf()
     #plt.show()
 
 
@@ -90,6 +93,7 @@ def do_work():
     plt.legend(loc=1)
     plt.xlim(0, 550)
     plt.savefig('../images/ba_calibrated.png')
+    plt.clf()
     #plt.show()
 
     found_list = simpleFindPeak(ba, 7, 5, energies)

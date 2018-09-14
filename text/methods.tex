@@ -1,47 +1,50 @@
-We will begin by outlining the objectives for our automation of the data analysis:
+Figure 1 shows the uncalibrated spectral data for $^{241}$Am and $^{137}$Cs where the x axis is still
+the channel number from the detector output.
 
-\begin{enumerate}
-  \item All produceables are called via a {\tt Makefile}.
-  \item Data is imported from an online public storage site.
-  \item Energy calibration is completed on at least one isotope from the energy data.
-  \item The lab report is written in \LaTeX and complied via the make file into a .pdf document
-  \item All files are pushed to {\tt GitHub} for submission.
-\end{enumerate}
-
-Each of one these tasks will provide insight into data analysis, technical writing, and
-production of publishable documents.
-
-\subsection{Peak Fitting}
-
-As the importing of data is a routine exercise, we will start with the discussion of our analysis in Python.
-The first task is to read and unpack the data file and convert it to a {\tt numpy} array. From this array, we will parse the data and
-build sub arrays for each isotope. We then manually input the known gamma energy for each isotope. These known values are shown below, as well
-as a composite spectrum of all the sources.
-
-\begin{figure}[h]
-  \begin{center}
-      \includegraphics[width=7cm]{am_cs_uncalibrated.png}
-      \caption{\label{fig:uncal_spec}Uncalibrated Spectra for $^{241}$Am and $^{137}$Cs }
-  \end{center}
-\end{figure}
-
-Once the peak values are assigned, we then determined the indexing of this known value within the data for several peaks.
-Now knowing the difference between the binned energy and the published energy, you can calibrate the rest of the spectrum based
-on this difference.
-
-\begin{figure}[h]
-  \begin{center}
-      \includegraphics[width=7cm]{linear_fit.png}
-      \caption{\label{fig:linear_fit}Linear fit model for spectra}
-  \end{center}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{am_cs_uncalibrated.png}
+  \caption{Uncalibrated spectra for $^{241}$Am and $^{137}$Cs}
+  \label{fig:uncalspectra}
 \end{figure}
 
 
-When we apply this fit to the data and you can clearly see the 662 keV peak of $^{137}$Cs is properly calibrated.
+The next step is to take the accepted values for the full energy peaks for $^{241}$Am and $^{137}$Cs and preform
+a linear calibration to fit the data to the proper energy.
+\begin{center}
+  \begin{equation}
+    \label{eq:cal}
+    y = mx+b
+  \end{equation}
+  where
+  \begin{equation}
+    \label{eq:slope}
+    m = \frac{E_{Cs} - E_{Am}}{Ch_{Cs}-Ch_{Am}}
+  \end{equation}
+  and the intercept is found by
+  \begin{equation}
+    \label{eq:slope}
+    b = -m*Ch_{Am} + E_{Am}
+  \end{equation}
+\end{center}
+  Applying this fit yields our linear model:
 
-\begin{figure}
+\begin{figure}[H]
   \begin{center}
-    \includegraphics[width=10cm]{am_cs_calibrated.png}
-    \caption{\label{fig:uncal_spec2}Uncalibrated Spectra for $^{241}$Am and $^{137}$Cs }
+    \includegraphics[width=10cm]{linear_fit.png}
+    \caption{\label{fig:linfit}Linear Fit Model}
   \end{center}
 \end{figure}
+
+
+ When we apply this fit to the data and you can clearly see the 662 keV peak of $^{137}$Cs is properly calibrated.
+
+ \begin{figure}[H]
+   \begin{center}
+     \includegraphics[width=10cm]{am_cs_calibrated.png}
+     \caption{\label{fig:linfit}Calibrated Spectra for $^{241}$Am and $^{137}$Cs }
+   \end{center}
+ \end{figure}
+
+ This model will then be applied to the $^{133}$Ba data, then compared to the accepted gamma energy values to
+ evaluate the effectiveness of our calibration.

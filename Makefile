@@ -9,6 +9,8 @@ $(manuscript).pdf: $(manuscript).tex text/*.tex references.bib images/*.png #ima
 	pdflatex $(latexopt) $(manuscript).tex
 	pdflatex $(latexopt) $(manuscript).tex
 
+
+
 # Get/download necessary data
 data :
 	curl -L -o lab0_spectral_data.txt https://www.dropbox.com/s/hutmwip3681xlup/lab0_spectral_data.txt?dl=0

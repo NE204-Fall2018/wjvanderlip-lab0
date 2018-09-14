@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -9,7 +10,7 @@ from tools204 import linear_calib, gammaEnergy, isoDetails, simpleFindPeak
 
 def get_change(exp_val, accepted):
     if exp_val == accepted:
-        return 100.0
+        return 0.00 #no change
     return (abs(exp_val - accepted) / abs(accepted)) * 100.0
 
 def do_work():

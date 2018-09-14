@@ -21,7 +21,7 @@ class TestBasicFuncs(unittest.TestCase):
 
     print(analysis.get_change(2, 4))
     def test_get_change_equal(self):
-        self.assertEqual(analysis.get_change(2, 2), 100.0)
+        self.assertEqual(analysis.get_change(2, 2), 0.00)
 
     def test_get_change_firsthigh(self):
         self.assertEqual(analysis.get_change(2, 4), 50.0)

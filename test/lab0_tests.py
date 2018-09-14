@@ -11,9 +11,6 @@ import sys
 sys.path.append(os.path.abspath('../code'))  #this is a work around for an import issue I was having
 import analysis, tools204
 
-
-print('imports complete')
-
 class TestBasicFuncs(unittest.TestCase):
 
     def setUp(self):

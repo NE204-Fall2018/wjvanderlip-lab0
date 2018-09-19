@@ -3,7 +3,6 @@
 import unittest
 import pandas as pd
 from pandas.util.testing import assert_series_equal
-from unittest.mock import patch
 
 import os
 import sys
